@@ -4,7 +4,7 @@ pong module
 __version__="0.1.0"
 import pygame, sys
 from settings import width, height
-import ball
+import ball as b
 import random
 
 pygame.init()
@@ -24,15 +24,15 @@ while True:
     #screen.fill('black')
     # Drawing objects
     pygame.draw.aaline(screen, 'white', (width / 2, 0), (width / 2, height))
-    pygame.draw.ellipse(screen, 'white', ball.ball)
+    pygame.draw.ellipse(screen, 'white', b.ball)
     # ^1st, where to draw object, 2nd is colour, 3rd define of rect (pulled from ball .py) .ellipse = circle
-    pygame.draw.rect(screen, 'red', ball.player)
+    pygame.draw.rect(screen, 'red', b.player)
     # Player paddle + position
-    pygame.draw.rect(screen, 'white', ball.cpu)
+    pygame.draw.rect(screen, 'white', b.cpu)
     # CPU paddle + position
-    ball.x += ball.ball_speed_x
-    ball.y += ball.ball_speed_y
-    #ATTEMPT TO MAKE THE BALL MOVE
+    b.ball.x += b.ball_speed_x
+    b.ball.y += b.ball_speed_y
+
 
     pygame.display.update()
     clock.tick(60)
