@@ -30,9 +30,9 @@ while True:
     # Player paddle + position
     pygame.draw.rect(screen, 'white', ball.cpu)
     # CPU paddle + position
-    def _random_direction(self):
-        direction = ("right", "left")
-        self.direction = random.choice(direction)
+    ball.x += ball.ball_speed_x
+    ball.y += ball.ball_speed_y
+    #ATTEMPT TO MAKE THE BALL MOVE
 
     pygame.display.update()
     clock.tick(60)

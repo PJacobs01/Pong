@@ -3,9 +3,8 @@ from settings import width, height, player_height, player_width
 
 #Ball
 ball = pygame.Rect(width/2,height/2,30,30)
-def _random_direction(self):
-    direction = ("right", "left")
-    self.direction = random.choice(direction)
+ball_speed_x = 6
+ball_speed_y = 6
 
 #Player Pad
 player = pygame.Rect(0,0, player_width, player_height)
