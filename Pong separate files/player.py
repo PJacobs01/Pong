@@ -8,4 +8,7 @@ player_speed = 0
 #CPU Pad
 cpu = pygame.Rect(880,0, player_width, player_height)
 cpu.centery = height/2
+cpu_speed = 6
 #First 2 values = coordinates, Last 2 values = dimensions in pixels
+
+cpu_points, player_points = 0, 0
