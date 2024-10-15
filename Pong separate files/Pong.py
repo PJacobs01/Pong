@@ -22,9 +22,9 @@ def ball_movement():
     if b.ball.bottom >= height or b.ball.top <= 0:
         b.ball_speed_y *= -1
     if b.ball.right >= width:
-        point_won("cpu")
-    if b.ball.left <= 0:
         point_won("player")
+    if b.ball.left <= 0:
+        point_won("cpu")
 
     if b.ball.colliderect(p.player) or b.ball.colliderect(p.cpu):
         b.ball_speed_x *=-1
@@ -56,9 +56,9 @@ def cpu_movement():
 
 def display_winner(screen, winner):
     if winner == "cpu":
-        winner_text = score_font.render("Player Wins!", True, "red")
+        winner_text = score_font.render("CPU Wins! YOU LOSE", True, "white")
     else:
-        winner_text = score_font.render("CPU Wins!", True, "white")
+        winner_text = score_font.render("Player Wins!", True, "red")
 
     text_rect = winner_text.get_rect(center=(width/2, height/2))
     screen.blit(winner_text, text_rect)
@@ -66,17 +66,16 @@ def display_winner(screen, winner):
     pygame.time.wait(3000)
 
 def point_won(winner):
-    p.cpu_points, p.player_points
     if winner == "cpu":
         p.cpu_points += 1
     if winner == "player":
         p.player_points += 1
     reset_ball()
-    if p.player_points >= p.score_limit:
-        display_winner(screen,"player")
-        reset_game()
-    elif p.cpu_points >= p.score_limit:
+    if p.cpu_points >= p.score_limit:
         display_winner(screen, "cpu")
+        reset_game()
+    elif p.player_points >= p.score_limit:
+        display_winner(screen,"player")
         reset_game()
 
 def reset_game():
