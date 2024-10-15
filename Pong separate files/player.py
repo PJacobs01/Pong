@@ -12,3 +12,4 @@ cpu_speed = 6
 #First 2 values = coordinates, Last 2 values = dimensions in pixels
 
 cpu_points, player_points = 0, 0
+score_limit = 5
