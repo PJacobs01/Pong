@@ -29,6 +29,17 @@ def ball_movement():
     if b.ball.colliderect(p.player) or b.ball.colliderect(p.cpu):
         b.ball_speed_x *=-1
 
+def speed_up():
+    delta = int(p.cpu_points + p.player_points) // 10
+    if b.ball_speed_x > 0:
+        b.ball_speed_x += delta
+    else:
+        b.ball_speed_x -= delta
+    if b.ball_speed_y > 0:
+        b.ball_speed_y += delta
+    else:
+        b.ball_speed_y -= delta
+
 def reset_ball():
     b.ball.x = width / 2 - 10
     b.ball.y = random.randint(10,100)
@@ -107,14 +118,15 @@ while True:
     ball_movement()
     player_movement()
     cpu_movement()
+    speed_up()
     score_font = pygame.font.Font(None, 100)
 
     # Drawing objects
     screen.fill('black')
     cpu_score_surface = score_font.render(str(p.cpu_points), True, "white")
     player_score_surface = score_font.render(str(p.player_points), True, "white")
-    screen.blit(cpu_score_surface,(width/4,0))
-    screen.blit(player_score_surface,(3*width/4,0))
+    screen.blit(player_score_surface,(width/4,0))
+    screen.blit(cpu_score_surface,(3*width/4,0))
     #Scores display
 
     pygame.draw.aaline(screen, 'white', (width / 2, 0), (width / 2, height))
