@@ -75,7 +75,7 @@ def start_game(difficulty):
 def ball_movement():
     b.ball.x += b.ball_speed_x
     b.ball.y += b.ball_speed_y
-    # Ball movemennt
+
     if b.ball.bottom >= height or b.ball.top <= 0:
         b.ball_speed_y *= -1
     if b.ball.right >= width:
@@ -100,8 +100,8 @@ def speed_up():
 
 def reset_ball():
     b.ball.x = width / 2 - 10
-    b.ball.y = random.randint(10,100)
-    b.ball_speed_x *= random.choice([6,-6])
+    b.ball.y = random.randint(10,400)
+    b.ball_speed_x = b.original_speed
 
 def player_movement():
     p.player.y += p.player_speed
@@ -176,8 +176,6 @@ while True:
     start_game(difficulty)
     ball_movement()
     player_movement()
-    #cpu_movement()
-    #speed_up()
     score_font = pygame.font.Font(None, 100)
 
     # Drawing objects
