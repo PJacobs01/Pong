@@ -197,11 +197,3 @@ while True:
     pygame.display.update()
     clock.tick(60)
 #^Updating display frame rate, 60fps
-
-
-
-
-
-
-#def f(x):
- #   return x+2
