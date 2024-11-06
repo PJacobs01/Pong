@@ -13,6 +13,7 @@ Import the following python modules:
 - sys
 - ball as b
 - player as p 
+- settings
 - random
 
 Code should be able to run if executed in its current form.
