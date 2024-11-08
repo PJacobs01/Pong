@@ -22,7 +22,7 @@ difficulty_rects = []
 
 def draw_menu():
     screen.fill('black')
-    y_offset = 150
+    y_offset = 100
     for index, difficulty in enumerate(difficulties):
         text = font.render(difficulty,True, 'white')
         rect = text.get_rect(center=(width//2, y_offset))
@@ -172,7 +172,7 @@ while True:
             if event.key == pygame.K_DOWN:
                 p.player_speed = 0
 
-#^Command lines (while loop) for exiting the game - if select quit then programme closes. Checking for events.
+
     start_game(difficulty)
     ball_movement()
     player_movement()
@@ -189,11 +189,10 @@ while True:
     pygame.draw.aaline(screen, 'white', (width / 2, 0), (width / 2, height))
     pygame.draw.ellipse(screen, 'white', b.ball)
     # ^1st, where to draw object, 2nd is colour, 3rd define of rect (pulled from ball .py) .ellipse = circle
-    pygame.draw.rect(screen, 'red', p.player)
-    # Player paddle + position
+    pygame.draw.rect(screen, 'white', p.player)
+
     pygame.draw.rect(screen, 'white', p.cpu)
-    # CPU paddle + position
+
 
     pygame.display.update()
     clock.tick(60)
-#^Updating display frame rate, 60fps
