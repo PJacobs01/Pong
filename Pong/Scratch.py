@@ -20,6 +20,9 @@ difficulty_rects = []
 #^Screen set up, title and game clock added
 #------------------------------------------------------
 class Game:
+    def __init__(self):
+        self.cpu_speed = 0
+
     def draw_menu(self):
         screen.fill('black')
         y_offset = 100
@@ -64,11 +67,9 @@ class Game:
                 p.cpu.y -= cpu_speed
             elif b.ball.centery > p.cpu.centery:
                 p.cpu.y += cpu_speed
-        """p.cpu.centery = b.ball.centery + b.ball_speed_x * 2
-        if p.cpu.top < 0:
-            p.cpu.top = 0
-        if p.cpu.bottom > height:
-            p.cpu.bottom = height"""
+        self.reset_ball()
+        p.player.centery = height // 2
+        p.cpu.centery = height //2
 
     def ball_movement(self):
         b.ball.x += b.ball_speed_x
@@ -86,6 +87,7 @@ class Game:
         b.ball.x = width / 2 - 10
         b.ball.y = random.randint(10,400)
         b.ball_speed_x = b.original_speed
+        b.ball_speed_y = b.original_speed * random.choice ((1, -1))
 
     def player_movement(self):
         p.player.y += p.player_speed
@@ -121,12 +123,13 @@ class Game:
         p.cpu_points = 0
         p.player_points = 0
         self.reset_ball()
-        difficulty = self.menu_selection()
+        difficulty = menu_selection()
         self.start_game(difficulty)
         pygame.display.set_caption("Pong")
 
     def run_game(self):
         difficulty = self.menu_selection()
+        self.start_game(difficulty)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -144,8 +147,6 @@ class Game:
                     if event.key == pygame.K_DOWN:
                         p.player_speed = 0
 
-
-        self.start_game(difficulty)
         self.ball_movement()
         self.player_movement()
     score_font = pygame.font.Font(None, 100)
@@ -166,5 +167,4 @@ class Game:
     clock.tick(60)
 
 game = Game()
-difficulty = game.menu_selection()
 game.run_game()
